@@ -6,9 +6,9 @@ How To Use
 
 First, add a couple files to your .env file.  If you don't have one, create and gitignore it
 
-FUB_KEY=MY_FUB_KEY
+FUB_KEY=my_fub_key
 
-HOMEUP_BASE_URL=BASE_URL_OF_YOUR_WEBSITE
+FUB_SOURCE=website_url_or_name
 
 Now, you should be able to initiate your class
 

@@ -2,21 +2,23 @@
 
 class FUB
 {
-    private $base_url;
+    private $source;
     private $key;
 
     /**
      * Request constructor.
      * @param $key
+     * @throws \Exception
      */
     public function __construct($key = null)
     {
         if(empty($key) && empty(getenv('FUB_KEY')))
             throw new \Exception("Please add your Follow Up Boss API key to the .env file");
 
-        if(empty(getenv('HOMEUP_BASE_URL')))
-            throw new \Exception("Base URL required in .env file");
+        if(empty(getenv('FUB_SOURCE')))
+            throw new \Exception("Please add the source to the env file");
 
+        $this->source = getenv('FUB_SOURCE');
         $this->key = !empty($key) ? $key : getenv('FUB_KEY');
     }
 
@@ -26,7 +28,7 @@ class FUB
      */
     public function saveLead($lead)
     {
-        $data = ["source" => $this->base_url, "type" => "Registration"];
+        $data = ["source" => $this->source, "type" => "Registration"];
 
         $data['person'] = $lead;
 
