@@ -1,0 +1,27 @@
+{
+  "name": "homeup/followupboss-php-api",
+  "description": "PHP Interface for FollowUpBoss.",
+  "keywords": ["api", "followupboss", "crm"],
+  "license": "DBAD",
+  "authors": [
+    {
+      "name": "Troy Jaggard",
+      "email": "info@homeup.ca"
+    }
+  ],
+  "type": "library",
+  "require": {
+    "php": ">=5.4",
+    "guzzlehttp/guzzle": "^6.2",
+    "vlucas/phpdotenv": "^2.4",
+    "nesbot/carbon": "^1.22"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "HomeUp\\FollowUpBoss\\": "src/"
+    }
+  }
+}
