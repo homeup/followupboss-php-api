@@ -34,13 +34,13 @@ $events->saveLead([
 
 You can also send in the inquiry event (example data: https://docs.followupboss.com/reference#events-post)
 ```php
-$events->inquiry([
-    'firstName', 'John',  
-    'lastName' => 'Smith',  
-    'emails' => [['value' => 'johnsmith@example.com']], 
-    'phones' => [['value' => '555-555-5555']],
-    'tags' => ['Free Market Report']
-], "The main body of the inquiry goes here", "Property Inquiry", [optional_property_data], [optional_property_search_data], [optional_campaign_data]);
+$events->inquiry(
+    ['emails' => [['value' => 'johnsmith@example.com']]], 
+    "The main body of the inquiry goes here", "Property Inquiry", 
+    [optional_property_data], 
+    [optional_property_search_data], 
+    [optional_campaign_data]
+]);
 ```
 
 You can add notes to leads
