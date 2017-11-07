@@ -53,7 +53,8 @@ class HomeUpTest extends PHPUnit_Framework_TestCase{
             "lastName" => "Smith",
             "emails" => [["value" => "john.smith@example.com"]],
             "phones" => [["value" => "555-555-5555"]],
-            "tags" => ["Free Market Report"]
+            "tags" => ["Free Market Report"],
+            "customKidsNames" => "Sally & Joe"
         ];
 
         $response = $fub->saveLead($data);
