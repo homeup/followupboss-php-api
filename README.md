@@ -3,8 +3,11 @@ PHP Interface for working with the Follow Up Boss API
 
 How To Use
 --------
+First, download the package
 
-First, add a couple lines to your .env file.  If you don't have one, create and gitignore it
+`composer require homeup/followupboss-php-api`
+
+Then, add a couple lines to your .env file.  If you don't have one, create and gitignore it
 
 FUB_KEY=my_fub_key
 
