@@ -42,7 +42,7 @@ You can also send in the inquiry event (example data: https://docs.followupboss.
 $events->inquiry(
     ['emails' => [['value' => 'johnsmith@example.com']]], // Lead data
     "The main body of the inquiry goes here",  // Body of inquiry
-    "Enter Type of Inquiry", // Example: "Property Inquiry"
+    "Enter Type of Inquiry", // Example: "Property Inquiry" or "Registration"
     [optional_property_data], 
     [optional_property_search_data], 
     [optional_campaign_data]
