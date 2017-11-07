@@ -4,7 +4,7 @@ PHP Interface for working with the Follow Up Boss API
 How To Use
 --------
 
-First, add a couple files to your .env file.  If you don't have one, create and gitignore it
+First, add a couple lines to your .env file.  If you don't have one, create and gitignore it
 
 FUB_KEY=my_fub_key
 
@@ -32,7 +32,7 @@ $events->saveLead([
 ]);
 ```
 
-You can also send in the inquiry event
+You can also send in the inquiry event (example data: https://docs.followupboss.com/reference#events-post)
 ```php
 $events->inquiry([
     'firstName', 'John',  
@@ -40,7 +40,7 @@ $events->inquiry([
     'emails' => [['value' => 'johnsmith@example.com']], 
     'phones' => [['value' => '555-555-5555']],
     'tags' => ['Free Market Report']
-], "The main body of the inquiry goes here", "Property Inquiry", [optional_property_data]);
+], "The main body of the inquiry goes here", "Property Inquiry", [optional_property_data], [optional_property_search_data], [optional_campaign_data]);
 ```
 
 You can add notes to leads
