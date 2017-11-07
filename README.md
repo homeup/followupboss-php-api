@@ -24,6 +24,7 @@ $fub->saveLead([
     'firstName', 'John',  
     'lastName' => 'Smith',  
     'emails' => [['value' => 'johnsmith@example.com']], 
-    'phones' => [['value' => '555-555-5555']],'tags' => ['Free Market Report']
+    'phones' => [['value' => '555-555-5555']],
+    'tags' => ['Free Market Report']
 ]);
 ```
