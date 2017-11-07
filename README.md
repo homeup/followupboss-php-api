@@ -36,7 +36,8 @@ You can also send in the inquiry event (example data: https://docs.followupboss.
 ```php
 $events->inquiry(
     ['emails' => [['value' => 'johnsmith@example.com']]], 
-    "The main body of the inquiry goes here", "Property Inquiry", 
+    "The main body of the inquiry goes here", 
+    "Enter Type of Inquiry", 
     [optional_property_data], 
     [optional_property_search_data], 
     [optional_campaign_data]
