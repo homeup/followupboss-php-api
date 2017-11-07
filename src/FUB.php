@@ -2,8 +2,11 @@
 
 class FUB
 {
-    private $source;
-    private $key;
+    private $api_base_url = "https://api.followupboss.com";
+    private $api_version = "v1";
+    protected $api_url;
+    protected $source;
+    protected $key;
 
     /**
      * Request constructor.
@@ -20,20 +23,6 @@ class FUB
 
         $this->source = getenv('FUB_SOURCE');
         $this->key = !empty($key) ? $key : getenv('FUB_KEY');
-    }
-
-    /**
-     * @param $lead
-     * @return mixed
-     */
-    public function saveLead($lead)
-    {
-        $data = ["source" => $this->source, "type" => "Registration"];
-
-        $data['person'] = $lead;
-
-        $response = Request::send('https://api.followupboss.com/v1/events', $data);
-
-        return $response;
+        $this->api_url = $this->api_base_url . "/" . $this->api_version;
     }
 }

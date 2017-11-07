@@ -10,22 +10,42 @@ FUB_KEY=my_fub_key
 
 FUB_SOURCE=website_url_or_name
 
-Now, you should be able to initiate your class
+Then you can simply use any of the following commands to send data to FollowUp Boss.
+
+To get lead data from FUB:
 
 ```php
-$fub = new HomeUp\FollowUpBoss\FUB();
+$people = new HomeUp\FollowUpBoss\People();
+$person = $people->find("test@example.com");
 ```
-
-Then you can simply use any of the following commands to send data to FollowUp Boss.
 
 To send in lead data:
 
 ```php
-$fub->saveLead([
+$events = new HomeUp\FollowUpBoss\Events();
+$events->saveLead([
     'firstName', 'John',  
     'lastName' => 'Smith',  
     'emails' => [['value' => 'johnsmith@example.com']], 
     'phones' => [['value' => '555-555-5555']],
     'tags' => ['Free Market Report']
 ]);
+```
+
+You can also send in the inquiry event
+```php
+$events->inquiry([
+    'firstName', 'John',  
+    'lastName' => 'Smith',  
+    'emails' => [['value' => 'johnsmith@example.com']], 
+    'phones' => [['value' => '555-555-5555']],
+    'tags' => ['Free Market Report']
+], "The main body of the inquiry goes here", "Property Inquiry", [optional_property_data]);
+```
+
+You can add notes to leads
+
+```php
+$notes = new HomeUp\FollowUpBoss\Notes();
+$notes->add(1234, "This is the subject of the note", "This is the body of the note");
 ```

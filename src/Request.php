@@ -7,18 +7,21 @@ class Request
 
     /**
      * @param $url
+     * @param string $request_type
      * @param $data
      * @return mixed
+     * @throws \Exception
      */
-    public static function send($url, $data)
+    public static function send($url, $data = null, $request_type = "POST")
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, getenv('FUB_KEY') . ':');
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $request_type);
+        if(!empty($data))
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
 
         $response = curl_exec($ch);
         if ($response === false) {
@@ -28,11 +31,16 @@ class Request
         // check HTTP status code
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         if ($code == 201) {
-            return "New contact created.\n";
+            error_log("New contact created.\n");
         } elseif ($code == 200) {
-            return "Existing contact updated.\n";
+            error_log("Existing contact updated.\n");
         } else {
-            return "Error, status code: {$code}\n";
+            var_dump($response);
+            throw new \Exception("Error, status code: {$code}\n");
         }
+
+        curl_close($ch);
+
+        return json_decode($response);
     }
 }
