@@ -9,9 +9,12 @@ First, download the package
 
 Then, add a couple lines to your .env file.  If you don't have one, create and gitignore it
 
+```
 FUB_KEY=my_fub_key
 
 FUB_SOURCE=website_url_or_name
+```
+
 
 Then you can simply use any of the following commands to send data to FollowUp Boss.
 
