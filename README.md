@@ -11,7 +11,6 @@ Then, add a couple lines to your .env file.  If you don't have one, create and g
 
 ```
 FUB_KEY=my_fub_key
-
 FUB_SOURCE=website_url_or_name
 ```
 
