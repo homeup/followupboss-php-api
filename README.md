@@ -35,7 +35,7 @@ $events->saveLead([
 You can also send in the inquiry event (example data: https://docs.followupboss.com/reference#events-post)
 ```php
 $events->inquiry(
-    ['emails' => [['value' => 'johnsmith@example.com']]], 
+    ['emails' => [['value' => 'johnsmith@example.com']]], // Lead data
     "The main body of the inquiry goes here", 
     "Enter Type of Inquiry", 
     [optional_property_data], 
