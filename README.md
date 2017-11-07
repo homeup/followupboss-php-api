@@ -53,5 +53,5 @@ You can add notes to leads
 
 ```php
 $notes = new HomeUp\FollowUpBoss\Notes();
-$notes->add(1234, "This is the subject of the note", "This is the body of the note");
+$notes->add(id_of_person, "This is the subject of the note", "This is the body of the note");
 ```
