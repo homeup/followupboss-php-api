@@ -20,5 +20,10 @@ Then you can simply use any of the following commands to send data to FollowUp B
 To send in lead data:
 
 ```php
-$fub->saveLead(['firstName', 'John',  'lastName' => 'Smith',  'emails' => [['value' => 'johnsmith@example.com']], 'phones' => [['value' => '555-555-5555']],'tags' => ['Free Market Report']]);
+$fub->saveLead([
+    'firstName', 'John',  
+    'lastName' => 'Smith',  
+    'emails' => [['value' => 'johnsmith@example.com']], 
+    'phones' => [['value' => '555-555-5555']],'tags' => ['Free Market Report']
+]);
 ```
