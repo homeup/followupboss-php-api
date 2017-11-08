@@ -71,7 +71,7 @@ class Events extends FUB
      */
     public function pageView($lead, $page_title, $url, $duration = null)
     {
-        $data = ["source" => $this->source, "type" => "Viewed Property"];
+        $data = ["source" => $this->source, "type" => "Viewed Page"];
 
         $data['person'] = $lead;
 

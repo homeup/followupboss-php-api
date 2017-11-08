@@ -51,12 +51,12 @@ $events->inquiry(
 
 You can also send in page and listing views like so (example data: https://docs.followupboss.com/reference#events-post)
 ```php
-$events->viewedListing(
+$events->listingView(
     ['emails' => [['value' => 'johnsmith@example.com']]], // Lead data
     [property_data],
 ]);
 
-$events->viewedPage(
+$events->pageView(
     ['emails' => [['value' => 'johnsmith@example.com']]], // Lead data
     "Title of the Page",
     "http://example.com/about", // URL of the page
