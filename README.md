@@ -69,3 +69,13 @@ You can add notes to leads
 $notes = new HomeUp\FollowUpBoss\Notes();
 $notes->add(id_of_person, "This is the subject of the note", "This is the body of the note");
 ```
+
+You can assign an action plan to a lead and retrieve a list of all action plans
+
+```php
+$ap = new HomeUp\FollowUpBoss\ActionPlans();
+
+$plans = $ap->get()->actionPlans;
+
+$ap->assign(id_of_person, $plans[0]->id);
+```

@@ -2,6 +2,15 @@
 
 class Events extends FUB
 {
+    public function get($person_id, $type, $limit = 100, $offset = 0)
+    {
+        $type = str_replace(" ", "%20", $type);
+        $url = $this->api_url . "/events?personId=$person_id&type=$type&limit=$limit&offset=$offset";
+
+        $response = Request::send($url, null, "GET");
+
+        return $response;
+    }
     /**
      * @param $lead
      * @return mixed

@@ -108,4 +108,121 @@ class HomeUpTest extends PHPUnit_Framework_TestCase{
         unset($fub);
     }
 
+    /**
+     * Test to make sure the class can be called
+     */
+    public function testEventsCanBeRetrieved()
+    {
+        $fub = new FollowUpBoss\Events($this->key);
+
+        $response = $fub->get(2735, "Viewed Page");
+
+        $this->assertEquals("Viewed Page", $response->events[0]->type);
+
+        unset($fub);
+    }
+
+    /**
+     *
+     */
+    public function testAPageViewCanBeSaved()
+    {
+        $fub = new FollowUpBoss\Events($this->key);
+
+        $response = $fub->get(2735, "Viewed Page");
+
+        $this->assertEquals("Viewed Page", $response->events[0]->type);
+
+        $count = count($response->events);
+
+        $fub->pageView(["emails" => [["value" => "john.smith@example.com"]]], "Test Page Title", "http://rertest.dev");
+
+        $all_events = $fub->get(2735, "Viewed Page");
+        $new_count = count($all_events->events);
+
+        $this->assertTrue($count < $new_count);
+
+        unset($fub);
+    }
+
+    /**
+     *
+     */
+    public function testAListingViewCanBeSaved()
+    {
+        $fub = new FollowUpBoss\Events($this->key);
+
+        $fub->listingView(["emails" => [["value" => "john.smith@example.com"]]], [
+            "street" => "6825 Mulholland Dr",
+            "city" => "Los Angeles",
+            "state" => "CA",
+            "code" => "90068",
+            "mlsNumber" => "14729339",
+            "price" => "310000",
+            "forRent" => "0",
+            "url" => "http://urbanupgrade.ca",
+            "type" => "Residential"
+        ]);
+
+        $response = $fub->get(2735, "Viewed Property");
+
+        $this->assertEquals("Viewed Property", $response->events[0]->type);
+
+        $count = count($response->events);
+
+        $fub->listingView(["emails" => [["value" => "john.smith@example.com"]]], [
+            "street" => "6825 Mulholland Dr",
+            "city" => "Los Angeles",
+            "state" => "CA",
+            "code" => "90068",
+            "mlsNumber" => "14729339",
+            "price" => "310000",
+            "forRent" => "0",
+            "url" => "http://urbanupgrade.ca",
+            "type" => "Residential"
+        ]);
+
+        $all_events = $fub->get(2735, "Viewed Property");
+        $new_count = count($all_events->events);
+
+        $this->assertTrue($count < $new_count);
+
+        unset($fub);
+    }
+
+    /**
+     *
+     */
+    public function testAnActionPlanCanBeAssignedToAPerson()
+    {
+        // Try and assign Property Listing Process with ID 4
+        $ap = new FollowUpBoss\ActionPlans($this->key);
+
+        $response = $ap->assign(2735, 4);
+
+        $this->assertEquals("Running", $response->status);
+    }
+
+    /**
+     *
+     */
+    public function testActionPlansCanBeCalled()
+    {
+        $ap = new FollowUpBoss\ActionPlans($this->key);
+
+        $plans = $ap->get()->actionPlans;
+
+        $found = false;
+        foreach($plans as $plan)
+        {
+            if($plan->name == "Annual Follow Up")
+            {
+                $found = true;
+                break;
+            }
+        }
+
+        $this->assertTrue($found);
+    }
+
 }
